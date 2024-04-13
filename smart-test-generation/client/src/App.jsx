@@ -6,6 +6,8 @@ import GitRepositoryForm from './view/GitRepositoryForm';
 
 import FileBrowser from './view/FileBrowser';
 import CodeDisplay from './CodeDisplay';
+import CodeEditor from './CodeEditor';
+import UnitTestClassDisplayAndEdit from './UnitTestClassDisplayAndEdit';
 
 const data = {
   name: 'project-title',
@@ -40,6 +42,19 @@ const data = {
               name: 'smth8.py',
               content: 'pyhton code 4'
             },
+            {
+              name: 'subfolder9',
+              children: [
+                {
+                  name: 'smth9.py',
+                  content: 'pyhton code 3'
+                },
+                {
+                  name: 'smth10.py',
+                  content: 'pyhton code 4'
+                },
+              ]
+            },
           ]
         },
       ]
@@ -63,6 +78,33 @@ const data = {
 };
 
 const code = `
+def add(a, b):
+  return a + b
+
+def subtract(a, b):
+  return a - b
+
+def multiply(a, b):
+  return a * b
+
+def divide(a, b):
+  if b == 0:
+      raise ValueError("Cannot divide by zero")
+  return a / b
+
+def is_even(n):
+  return n % 2 == 0
+
+def is_prime(n):
+  if n <= 1:
+      return False
+  for i in range(2, int(n**0.5) + 1):
+      if n % i == 0:
+          return False
+  return True
+`;
+
+const code_edit = `
 def add(a, b):
   return a + b
 
@@ -140,6 +182,9 @@ function App() {
       <FileBrowser data={data} />
 
       <CodeDisplay data={code}/>
+
+      <UnitTestClassDisplayAndEdit data={code_edit} />
+
     </>
   );
 }
