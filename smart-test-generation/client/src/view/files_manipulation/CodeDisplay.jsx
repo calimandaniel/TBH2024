@@ -14,7 +14,7 @@ const CodeDisplay = ({ filename, data }) => {
         spacing={0}
       >
         {filename && (
-          <p>
+          <p style={{marginBottom:'32px'}}>
             <FileIcon/>{filename}
           </p>
         )}
