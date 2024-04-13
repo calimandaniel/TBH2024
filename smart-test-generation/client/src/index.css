@@ -13,6 +13,7 @@
   -moz-osx-font-smoothing: grayscale;
 
   --genezio-green: #00c883;
+  --genezio-purple: #4c2e85;
 }
 
 a {
@@ -62,6 +63,7 @@ button:focus-visible {
 .textfield {
   width: 80%;
   height: 30px;
+  border: 2px solid var(--genezio-purple);
 }
 
 .i {  

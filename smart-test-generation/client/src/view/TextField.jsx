@@ -6,8 +6,12 @@ const TextField = ({value, handleChange}) => {
             type="text"
             value={value}
             onChange={handleChange}
-            placeholder="Repository URL"
+            placeholder="   Repository URL"
             className='textfield'
+            style={{
+                borderRadius: '10px', // Rounded border
+                padding: '5px 10px', // Optional: Adjust padding as needed
+              }}
         />
     )
 }
