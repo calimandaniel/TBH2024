@@ -34,7 +34,7 @@ const FileBrowser = ({ data }) => {
             );
         } else {
             return (
-                <p key={node.name} style={{ marginLeft: `${depth * 20}px` }}>
+                <p key={node.name} style={{ marginLeft: `${depth * 20}px`, whiteSpace: 'nowrap' }}>
                     <CODEICON/>{node.name}, depth: {depth}
                 </p>
             );
@@ -42,7 +42,7 @@ const FileBrowser = ({ data }) => {
     };
 
     return (
-        <div style={{ textAlign: 'left', border: '2px solid white', borderRadius: '10px', padding: '10px' }}>
+        <div style={{ textAlign: 'left', border: '2px solid white', borderRadius: '10px', padding: '10px', maxWidth: '20vw', overflowX: 'auto' }}>
             {renderNodes(data, 0)}
         </div>
     );
