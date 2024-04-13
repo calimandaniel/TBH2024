@@ -37,7 +37,7 @@ const FileBrowser = ({ data }) => {
     };
 
     return (
-        <div style={{ width: '500px', backgroundColor: 'red', textAlign: 'left' }}>
+        <div style={{ textAlign: 'left', border: '2px solid white', borderRadius: '10px', padding: '10px' }}>
             {renderNodes(data, 0)}
         </div>
     );
