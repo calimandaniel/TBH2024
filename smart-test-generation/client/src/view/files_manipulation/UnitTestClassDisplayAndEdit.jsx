@@ -22,7 +22,7 @@ const UnitTestClassDisplayAndEdit = ({ filename, data }) => {
             direction="column"
             justifyContent="center"
             alignItems="flex-end"
-            spacing={2}
+            spacing={0}
         >
             <UnitTestClassDisplayAndEditHeader
                 filename={filename}
