@@ -3,7 +3,9 @@ import { BackendService } from "@genezio-sdk/smart-test-generation";
 import './App.css'
 import Title from './view/Title';
 import GitRepositoryForm from './view/GitRepositoryForm';
-import FileBrowser from './FileBrowser';
+
+import FileBrowser from './view/FileBrowser';
+import CodeDisplay from './CodeDisplay';
 
 const data = {
   name: 'project-title',
@@ -60,6 +62,33 @@ const data = {
   ]
 };
 
+const code = `
+def add(a, b):
+  return a + b
+
+def subtract(a, b):
+  return a - b
+
+def multiply(a, b):
+  return a * b
+
+def divide(a, b):
+  if b == 0:
+      raise ValueError("Cannot divide by zero")
+  return a / b
+
+def is_even(n):
+  return n % 2 == 0
+
+def is_prime(n):
+  if n <= 1:
+      return False
+  for i in range(2, int(n**0.5) + 1):
+      if n % i == 0:
+          return False
+  return True
+`;
+
 function App() {
   const [repositoryURL, setRepositoryURL] = useState('');
   const [response, setResponse] = useState("");
@@ -109,6 +138,8 @@ function App() {
       />
 
       <FileBrowser data={data} />
+
+      <CodeDisplay data={code}/>
     </>
   );
 }

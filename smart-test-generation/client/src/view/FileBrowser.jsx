@@ -1,10 +1,10 @@
 import React from 'react';
 import { Accordion, AccordionItem, AccordionItemButton, AccordionItemHeading, AccordionItemPanel, AccordionItemState } from 'react-accessible-accordion';
 
-import FOLDERICON from './FolderIcon';
-import CODEICON from './CodeIcon';
-import DownArrowIcon from './DownArrowIcon';
-import LeftArrowIcon from './LeftArrowIcon';
+import FOLDERICON from './icons/FOLDERICON';
+import CODEICON from './icons/CODEICON';
+import DownArrowIcon from './icons/DownArrowIcon';
+import LeftArrowIcon from './icons/LeftArrowIcon';
 
 const FileBrowser = ({ data }) => {
     const renderNodes = (node, depth) => {
