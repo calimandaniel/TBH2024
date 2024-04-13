@@ -3,6 +3,8 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import Stack from '@mui/material/Stack';
 import FileIcon from '../icons/FileIcon';
+import FilenameDisplay from './FilenameDisplay';
+import CODEICON from '../icons/CODEICON';
 
 const CodeDisplay = ({ filename, data }) => {
   return (
@@ -14,9 +16,7 @@ const CodeDisplay = ({ filename, data }) => {
         spacing={0}
       >
         {filename && (
-          <p style={{marginBottom:'32px'}}>
-            <FileIcon/>{filename}
-          </p>
+          <FilenameDisplay filename={filename} />
         )}
         <SyntaxHighlighter language="python" style={vscDarkPlus}>
           {data}
