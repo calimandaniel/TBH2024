@@ -20,4 +20,8 @@ export class BackendService {
 
     return `Hello ${name}! This response was served from ${ipLocation.city}, ${ipLocation.country} (${ipLocation.lat}, ${ipLocation.lon}) at ${formattedTime}`;
   }
+
+  async findRepository(repositoryURL) {
+    return repositoryURL;
+  }
 }

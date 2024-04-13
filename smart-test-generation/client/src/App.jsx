@@ -1,48 +1,44 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import { BackendService } from "@genezio-sdk/smart-test-generation";
 import './App.css'
 
 function App() {
-  const [name, setName] = useState("");
+  const [repositoryURL, setRepositoryURL] = useState('');
   const [response, setResponse] = useState("");
 
-  async function sayHello() {
-    setResponse(await BackendService.hello(name));
+  async function findRepository() {
+    setResponse(await BackendService.findRepository(repositoryURL));
+    console.log('Received:', response);
   }
+
+  const handleChange = (event) => {
+    setRepositoryURL(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Do something with the input value, e.g., send it to a server
+    console.log('Sent:', repositoryURL);
+    findRepository();
+    
+    // Clear the input field after submission
+    setRepositoryURL('');
+  };
 
   return (
     <>
       <div>
-        <a href="https://genezio.com" target="_blank">
-          <img
-            src="https://raw.githubusercontent.com/Genez-io/graphics/main/svg/Logo_Genezio_White.svg"
-            className="logo genezio light"
-            alt="Genezio Logo"
-          />
-          <img
-            src="https://raw.githubusercontent.com/Genez-io/graphics/main/svg/Logo_Genezio_Black.svg"
-            className="logo genezio dark"
-            alt="Genezio Logo"
-          />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Genezio + React = ❤️</h1>
-      <div className="card">
-        <input
-          type="text"
-          className="input-box"
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Enter your name"
-        />
-        <br />
-        <br />
+        <h1>Smart Test Generation</h1>
 
-        <button onClick={() => sayHello()}>Say Hello</button>
-        <p className="read-the-docs">{response}</p>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            value={repositoryURL}
+            onChange={handleChange}
+            placeholder="Repository URL"
+          />
+          <button type="submit">Go</button>
+        </form>
       </div>
     </>
   );
