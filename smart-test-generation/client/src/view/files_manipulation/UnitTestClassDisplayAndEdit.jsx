@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import CodeDisplay from './CodeDisplay';
 import CodeEditor from './CodeEditor';
 import Stack from '@mui/material/Stack';
+import UnitTestClassDisplayAndEditHeader from './UnitTestClassDisplayAndEditHeader';
 
-const UnitTestClassDisplayAndEdit = ({ data }) => {
+const UnitTestClassDisplayAndEdit = ({ filename, data }) => {
   const [editMode, setEditMode] = useState(false);
   const [edited, setEdited] = useState(false);
 
@@ -23,21 +24,14 @@ const UnitTestClassDisplayAndEdit = ({ data }) => {
             alignItems="flex-end"
             spacing={2}
         >
-            <Stack
-            direction="row"
-            justifyContent="center"
-            alignItems="center"
-            spacing={2}
-        >
-            <button onClick={handleToggleEditMode}>
-                    {editMode ? 'Cancel' : 'Edit'}
-                </button>
-                <button onClick={() => console.log('Save button clicked')} disabled={!edited}>
-                    Save
-                </button>
-        </Stack>
+            <UnitTestClassDisplayAndEditHeader
+                filename={filename}
+                editMode={editMode}
+                edited={edited} 
+                handleToggleEditMode={handleToggleEditMode}
+            />
       
-      {editMode ? <CodeEditor data={data} onChange={handleTextChange} /> : <CodeDisplay data={data} />}
+            {editMode ? <CodeEditor data={data} onChange={handleTextChange} /> : <CodeDisplay data={data} />}
 
         </Stack>
     </>

@@ -42,7 +42,7 @@ const FileBrowser = ({ data }) => {
     };
 
     return (
-        <div style={{ textAlign: 'left', border: '2px solid white', borderRadius: '10px', padding: '10px', maxWidth: '20vw', overflowX: 'auto' }}>
+        <div style={{ textAlign: 'left', border: '2px solid white', borderRadius: '10px', padding: '10px', maxWidth: '20vw', overflowX: 'auto', minWidth: '300px', }}>
             {renderNodes(data, 0)}
         </div>
     );

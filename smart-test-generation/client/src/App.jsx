@@ -5,9 +5,8 @@ import Title from './view/Title';
 import GitRepositoryForm from './view/GitRepositoryForm';
 
 import FileBrowser from './view/FileBrowser';
-import CodeDisplay from './CodeDisplay';
-import CodeEditor from './CodeEditor';
-import UnitTestClassDisplayAndEdit from './UnitTestClassDisplayAndEdit';
+import CodeDisplay from './view/files_manipulation/CodeDisplay';
+import UnitTestClassDisplayAndEdit from './view/files_manipulation/UnitTestClassDisplayAndEdit';
 import Stack from '@mui/material/Stack';
 
 const data = {
@@ -90,7 +89,7 @@ def multiply(a, b):
 
 def divide(a, b):
   if b == 0:
-      raise ValueError("Cannot divide by zero")
+      raise ValueError("Cannot divide by zero zero zero zero zero zero zero")
   return a / b
 
 def is_even(n):
@@ -131,6 +130,9 @@ def is_prime(n):
           return False
   return True
 `;
+
+const filename1 = 'smth5.py';
+const filename2 = 'smth6.py';
 
 function App() {
   const [repositoryURL, setRepositoryURL] = useState('');
@@ -183,9 +185,9 @@ function App() {
       <Stack spacing={{ xs: 1, sm: 2 }} direction="row" useFlexGap flexWrap="wrap">
         <FileBrowser data={data} />
 
-        <CodeDisplay data={code}/>
+        <CodeDisplay filename={filename1} data={code}/>
 
-        <UnitTestClassDisplayAndEdit data={code_edit} />
+        <UnitTestClassDisplayAndEdit filename={filename2} data={code_edit} />
       </Stack>
 
       
