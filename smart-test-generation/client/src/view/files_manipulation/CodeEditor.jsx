@@ -14,7 +14,7 @@ const CodeEditor = ({ data, onChange }) => {
                 <textarea
                     value={code}
                     onChange={handleChange}
-                    style={{ width: '100%', minHeight: '200px', fontFamily: 'Courier New', fontSize: '14px', lineHeight: '1.5', resize: 'none' }}
+                    style={{ minWidth: '400px', maxWidth: '20vw', minHeight: '200px', fontFamily: 'Courier New', fontSize: '14px', lineHeight: '1.5', resize: 'none', marginTop: '7px'}}
                     rows={code.split('\n').length} // Set rows dynamically based on number of lines
                 />
             </div>
