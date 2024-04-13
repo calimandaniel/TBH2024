@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { BackendService } from "@genezio-sdk/smart-test-generation";
 import './App.css'
+import Title from './view/Title';
+import GitRepositoryForm from './view/GitRepositoryForm';
 
 function App() {
   const [repositoryURL, setRepositoryURL] = useState('');
@@ -19,16 +21,13 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Do something with the input value, e.g., send it to a server
     console.log('Sent:', repositoryURL);
     findRepository();
     
-    // Clear the input field after submission
     setRepositoryURL('');
   };
 
   const validateGitRepoURL = (url) => {
-    // Regular expression for validating Git repository URLs
     console.log('Checking:', url);
     const regex = /^https:\/\/\w+(\.\w+)*\/[^\/]+\/[^\/]+\.git$/;
 
@@ -37,21 +36,15 @@ function App() {
 
   return (
     <>
-      <div>
-        <h1>Smart Test Generation</h1>
+      <Title />
 
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            value={repositoryURL}
-            onChange={handleChange}
-            placeholder="Repository URL"
-            className='textfield'
-          />
-          <button type="submit">Go</button>
-        </form>
-        {!isValidURL && <p style={{ color: 'red' }}>Invalid Git repository URL format</p>}
-      </div>
+      <GitRepositoryForm 
+        onSubmit={handleSubmit} 
+        value={repositoryURL} 
+        handleChange={handleChange} 
+        disabled={!isValidURL || repositoryURL=== ''} 
+        show={!isValidURL}
+      />
     </>
   );
 }

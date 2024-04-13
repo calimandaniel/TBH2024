@@ -12,6 +12,8 @@ genezio local
 ```
 
 ## For deployment of both frontend and backend, run:
+Requirements:
+- Log in ```genezio login```
  ```terminal
 cd smart-test-generation
 genezio deploy
