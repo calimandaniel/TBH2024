@@ -1,49 +1,54 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import { BackendService } from "@genezio-sdk/smart-test-generation";
 import './App.css'
+import Title from './view/Title';
+import GitRepositoryForm from './view/GitRepositoryForm';
 
 function App() {
-  const [name, setName] = useState("");
+  const [repositoryURL, setRepositoryURL] = useState('');
   const [response, setResponse] = useState("");
+  const [isValidURL, setIsValidURL] = useState(true);
+  const [processingRequest, setProcessingRequest] = useState(false);
 
-  async function sayHello() {
-    setResponse(await BackendService.hello(name));
+  async function findRepository() {
+    setProcessingRequest(true); // disable the ability to make new requests
+    setResponse(await BackendService.findRepository(repositoryURL));
+   
+    console.log('Received:', response);
+    setProcessingRequest(false); // disable the ability to make new requests
   }
+
+  const handleChange = (event) => {
+    setRepositoryURL(event.target.value);
+    setIsValidURL(validateGitRepoURL(event.target.value));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log('Sent:', repositoryURL);
+    findRepository();
+    
+    setRepositoryURL('');
+  };
+
+  const validateGitRepoURL = (url) => {
+    console.log('Checking:', url);
+    const regex = /^https:\/\/\w+(\.\w+)*\/[^\/]+\/[^\/]+\.git$/;
+
+    return regex.test(url);
+  };
 
   return (
     <>
-      <div>
-        <a href="https://genezio.com" target="_blank">
-          <img
-            src="https://raw.githubusercontent.com/Genez-io/graphics/main/svg/Logo_Genezio_White.svg"
-            className="logo genezio light"
-            alt="Genezio Logo"
-          />
-          <img
-            src="https://raw.githubusercontent.com/Genez-io/graphics/main/svg/Logo_Genezio_Black.svg"
-            className="logo genezio dark"
-            alt="Genezio Logo"
-          />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Genezio + React = ❤️</h1>
-      <div className="card">
-        <input
-          type="text"
-          className="input-box"
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Enter your name"
-        />
-        <br />
-        <br />
+      <Title />
 
-        <button onClick={() => sayHello()}>Say Hello</button>
-        <p className="read-the-docs">{response}</p>
-      </div>
+      <GitRepositoryForm 
+        onSubmit={handleSubmit} 
+        value={repositoryURL} 
+        handleChange={handleChange} 
+        disabled={!isValidURL || repositoryURL === '' || processingRequest} 
+        show={!isValidURL}
+      />
     </>
   );
 }
