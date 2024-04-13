@@ -35,14 +35,14 @@ const FileBrowser = ({ data }) => {
         } else {
             return (
                 <p key={node.name} style={{ marginLeft: `${depth * 20}px`, whiteSpace: 'nowrap' }}>
-                    <CODEICON/>{node.name}, depth: {depth}
+                    <CODEICON/>{node.name}
                 </p>
             );
         }
     };
 
     return (
-        <div style={{ textAlign: 'left', border: '2px solid white', borderRadius: '10px', padding: '10px', maxWidth: '20vw', overflowX: 'auto', minWidth: '300px', }}>
+        <div className='files-browser' style={{ textAlign: 'left', borderRadius: '10px', padding: '10px', maxWidth: '20vw', overflowX: 'auto', minWidth: '300px', }}>
             {renderNodes(data, 0)}
         </div>
     );

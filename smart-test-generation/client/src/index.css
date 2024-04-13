@@ -16,6 +16,7 @@
   --genezio-purple: #4c2e85;
   --disabled-button-background-color: #EEEEEE;
   --disabled-button-text-color: #222831;
+  --folder-selector-arrow: #267B84;
 }
 
 a {
@@ -88,6 +89,22 @@ button:focus-visible {
   color: var(--disabled-button-background-color); /* White text color */
 }
 
+.arrow-icon {
+  color: var(--folder-selector-arrow); /* Set the color to red */
+}
+
+.folder-icon {
+  color: var(--genezio-green); /* Set the color to red */
+}
+
+.code-icon {
+  color: var(--genezio-purple); /* Set the color to red */
+}
+
+.files-browser {
+  border: 2px solid white;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #000000;
@@ -111,6 +128,10 @@ button:focus-visible {
   .disabled-button {
     background-color: var(--disabled-button-background-color); /* Red background */
     color: var(--disabled-button-text-color); /* White text color */
+  }
+
+  .files-browser {
+    border: 2px solid rgb(0, 0, 0);
   }
 
 }
