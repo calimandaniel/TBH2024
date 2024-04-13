@@ -10,6 +10,7 @@ const UnitTestClassDisplayAndEditMenu = ({ editMode, edited, handleToggleEditMod
         justifyContent="center"
         alignItems="center"
         spacing={2}
+        style={{marginRight: '10px'}}
     >
         <EditButton editMode={editMode} handleToggleEditMode={handleToggleEditMode} />
         <SaveButton edited={edited} />

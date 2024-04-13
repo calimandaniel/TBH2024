@@ -23,6 +23,8 @@ const UnitTestClassDisplayAndEdit = ({ filename, data }) => {
             justifyContent="center"
             alignItems="flex-end"
             spacing={0}
+            // style={{backgroundColor: 'red'}}
+            className='display'
         >
             <UnitTestClassDisplayAndEditHeader
                 filename={filename}

@@ -18,6 +18,7 @@
   --disabled-button-background-color: #EEEEEE;
   --disabled-button-text-color: #222831;
   --folder-selector-arrow: #267B84;
+  --editor-background: #1e1e1e;
 }
 
 a {
@@ -116,6 +117,12 @@ button:focus-visible {
 
 .save-button {
   background-color: var(--folder-selector-arrow);
+}
+
+.display {
+  background-color: var(--editor-background); 
+  border: 2px solid var(--editor-background);
+  border-radius: 10px;
 }
 
 @media (prefers-color-scheme: light) {

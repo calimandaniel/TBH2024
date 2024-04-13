@@ -6,7 +6,7 @@ import FilenameDisplay from './FilenameDisplay';
 
 const CodeDisplay = ({ filename, data }) => {
   return (
-    <div style={{ minWidth: '400px', maxWidth: '20vw', overflowX: 'auto' }}>
+    <div className='display' style={{ minWidth: '400px', maxWidth: '20vw', overflowX: 'auto' }}>
       <Stack
         direction="column"
         justifyContent="center"
