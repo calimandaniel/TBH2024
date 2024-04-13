@@ -8,10 +8,14 @@ function App() {
   const [repositoryURL, setRepositoryURL] = useState('');
   const [response, setResponse] = useState("");
   const [isValidURL, setIsValidURL] = useState(true);
+  const [processingRequest, setProcessingRequest] = useState(false);
 
   async function findRepository() {
+    setProcessingRequest(true); // disable the ability to make new requests
     setResponse(await BackendService.findRepository(repositoryURL));
+   
     console.log('Received:', response);
+    setProcessingRequest(false); // disable the ability to make new requests
   }
 
   const handleChange = (event) => {
@@ -42,7 +46,7 @@ function App() {
         onSubmit={handleSubmit} 
         value={repositoryURL} 
         handleChange={handleChange} 
-        disabled={!isValidURL || repositoryURL=== ''} 
+        disabled={!isValidURL || repositoryURL === '' || processingRequest} 
         show={!isValidURL}
       />
     </>
