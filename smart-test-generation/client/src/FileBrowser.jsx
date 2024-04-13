@@ -8,7 +8,7 @@ const FileBrowser = ({ data }) => {
     const renderNodes = (node, depth) => {
         if (node.children) {
             return (
-                <Accordion allowMultipleExpanded>
+                <Accordion allowZeroExpanded>
                     <AccordionItem key={node.name}>
                         <AccordionItemHeading>
                             <AccordionItemButton style={{ marginLeft: `${depth * 20}px` }}>
