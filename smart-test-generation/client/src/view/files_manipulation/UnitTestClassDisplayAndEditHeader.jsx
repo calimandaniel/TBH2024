@@ -1,6 +1,7 @@
 import React from 'react'
 import UnitTestClassDisplayAndEditMenu from './UnitTestClassDisplayAndEditMenu';
 import Stack from '@mui/material/Stack';
+import FileIcon from '../icons/FileIcon';
 
 const UnitTestClassDisplayAndEditHeader = ({ filename, editMode, edited, handleToggleEditMode}) => {
   return (
@@ -10,7 +11,7 @@ const UnitTestClassDisplayAndEditHeader = ({ filename, editMode, edited, handleT
         alignItems="center"
         width={'100%'}
     >                
-        <p>{filename}</p>
+        <p><FileIcon/>{filename}</p>
         <UnitTestClassDisplayAndEditMenu 
             editMode={editMode} 
             edited={edited} 
