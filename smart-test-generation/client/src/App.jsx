@@ -36,6 +36,7 @@ function App() {
             value={repositoryURL}
             onChange={handleChange}
             placeholder="Repository URL"
+            className='textfield'
           />
           <button type="submit">Go</button>
         </form>

@@ -34,6 +34,10 @@ h1 {
   line-height: 1.1;
 }
 
+input {
+  margin: 10px;
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -64,4 +68,9 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.textfield {
+  width: 80%;
+  height: 30px;
 }
