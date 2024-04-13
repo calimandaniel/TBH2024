@@ -5,6 +5,7 @@ import './App.css'
 function App() {
   const [repositoryURL, setRepositoryURL] = useState('');
   const [response, setResponse] = useState("");
+  const [isValidURL, setIsValidURL] = useState(true);
 
   async function findRepository() {
     setResponse(await BackendService.findRepository(repositoryURL));
@@ -13,6 +14,7 @@ function App() {
 
   const handleChange = (event) => {
     setRepositoryURL(event.target.value);
+    setIsValidURL(validateGitRepoURL(event.target.value));
   };
 
   const handleSubmit = (event) => {
@@ -23,6 +25,14 @@ function App() {
     
     // Clear the input field after submission
     setRepositoryURL('');
+  };
+
+  const validateGitRepoURL = (url) => {
+    // Regular expression for validating Git repository URLs
+    console.log('Checking:', url);
+    const regex = /^https:\/\/\w+(\.\w+)*\/[^\/]+\/[^\/]+\.git$/;
+
+    return regex.test(url);
   };
 
   return (
@@ -40,6 +50,7 @@ function App() {
           />
           <button type="submit">Go</button>
         </form>
+        {!isValidURL && <p style={{ color: 'red' }}>Invalid Git repository URL format</p>}
       </div>
     </>
   );
