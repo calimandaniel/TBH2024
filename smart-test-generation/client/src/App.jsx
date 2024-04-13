@@ -132,7 +132,7 @@ def is_prime(n):
 `;
 
 const filename1 = 'something very very looooooooooooooooooooooooooooooooooooooong 1.pyy';
-const filename2 = 'something very very looooooooong 2.py';
+const filename2 = 'something very very looooooooooooooooooooooooooooooooooooooong 2.pyy';
 
 function App() {
   const [repositoryURL, setRepositoryURL] = useState('');
@@ -182,7 +182,7 @@ function App() {
         show={!isValidURL}
       />
 
-      <Stack spacing={{ xs: 1, sm: 2 }} direction="row" useFlexGap flexWrap="wrap">
+      <Stack spacing={{ xs: 1, sm: 2 }} direction="row" useFlexGap flexWrap="wrap" style={{marginTop: '10vh', marginBottom: '10vh'}}>
         <FileBrowser data={data} />
 
         <CodeDisplay filename={filename1} data={code}/>

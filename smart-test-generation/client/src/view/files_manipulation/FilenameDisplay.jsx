@@ -3,7 +3,7 @@ import React from 'react'
 
 const FilenameDisplay = ({ filename }) => {
   return (
-    <p style={{marginBottom:'32px', marginLeft: '10px', color: 'white', whiteSpace: 'nowrap'}}>
+    <p style={{marginLeft: '10px', color: 'white', whiteSpace: 'nowrap'}}>
     <CODEICON/>{filename}
   </p>
   )

@@ -5,7 +5,7 @@ const EditButton = ({ editMode, handleToggleEditMode }) => {
     <button
       onClick={handleToggleEditMode}
       className={editMode ? 'cancel-button' : 'edit-button'}
-      style={{height: '40px', width: '100px'}}
+      style={{height: '45px', width: '100px'}}
     >
       {editMode ? 'Cancel' : 'Edit'}
     </button>

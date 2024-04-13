@@ -6,7 +6,7 @@ const SubmitButton = ({disabled}) => {
       type="submit" 
       disabled={disabled} 
       className={disabled ? 'disabled-button' : 'enabled-button'}
-      style={{height: '40px',  width: '100px'}}
+      style={{height: '45px',  width: '100px'}}
     >
       Go
     </button>

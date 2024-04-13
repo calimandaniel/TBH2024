@@ -1,18 +1,17 @@
 import React from 'react'
 import UnitTestClassDisplayAndEditMenu from './UnitTestClassDisplayAndEditMenu';
 import Stack from '@mui/material/Stack';
-import FileIcon from '../icons/FileIcon';
-import FilenameDisplay from './FilenameDisplay';
 
-const UnitTestClassDisplayAndEditHeader = ({ filename, editMode, edited, handleToggleEditMode}) => {
+const UnitTestClassDisplayAndEditHeader = ({ editMode, edited, handleToggleEditMode}) => {
   return (
     <Stack
         direction="row"
-        justifyContent="space-between"
+        justifyContent="center"
         alignItems="center"
         width={'100%'}
+        style={{marginBottom: '10px', marginTop: '10px'}}
     >                
-        <FilenameDisplay filename={filename}/>
+        
         <UnitTestClassDisplayAndEditMenu 
             editMode={editMode} 
             edited={edited} 

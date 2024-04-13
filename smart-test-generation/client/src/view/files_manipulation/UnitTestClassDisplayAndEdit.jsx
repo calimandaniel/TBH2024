@@ -23,18 +23,17 @@ const UnitTestClassDisplayAndEdit = ({ filename, data }) => {
             justifyContent="center"
             alignItems="flex-end"
             spacing={0}
-            // style={{backgroundColor: 'red'}}
             className='display'
         >
+      
+            {editMode ? <CodeEditor data={data} onChange={handleTextChange} /> : <CodeDisplay filename={filename} data={data} />}
+
             <UnitTestClassDisplayAndEditHeader
-                filename={filename}
                 editMode={editMode}
                 edited={edited} 
                 handleToggleEditMode={handleToggleEditMode}
             />
-      
-            {editMode ? <CodeEditor data={data} onChange={handleTextChange} /> : <CodeDisplay data={data} />}
-
+            
         </Stack>
     </>
   );
