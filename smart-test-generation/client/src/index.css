@@ -14,6 +14,8 @@
 
   --genezio-green: #00c883;
   --genezio-purple: #4c2e85;
+  --disabled-button-background-color: #EEEEEE;
+  --disabled-button-text-color: #222831;
 }
 
 a {
@@ -76,21 +78,39 @@ button:focus-visible {
   color: white;
 }
 
+.enabled-button {
+  background-color: var(--genezio-purple); /* Red background */
+  color: white; /* White text color */
+}
+
+.disabled-button {
+  background-color: var(--disabled-button-text-color); /* Red background */
+  color: var(--disabled-button-background-color); /* White text color */
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #000000;
     background-color: #ffffff;
   }
+  
   a:hover {
     color: #747bff;
   }
+  
   button {
     background-color: #f9f9f9;
   }
+
   .i:before {
     content: "ı";
     position: absolute; 
     color: rgb(0, 0, 0);
   }
-}
 
+  .disabled-button {
+    background-color: var(--disabled-button-background-color); /* Red background */
+    color: var(--disabled-button-text-color); /* White text color */
+  }
+
+}
