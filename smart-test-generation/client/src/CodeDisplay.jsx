@@ -1,12 +1,12 @@
 import React from 'react'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const CodeDisplay = ({ data }) => {
   return (
-    <pre style={{ textAlign: 'left',backgroundColor: '#f4f4f4', padding: '10px', borderRadius: '5px' }}>
-        <code style={{ fontFamily: 'Courier New', fontSize: '14px', lineHeight: '1.5', color: '#333' }}>
-            {data}
-        </code>
-    </pre>
+    <SyntaxHighlighter language="python" style={vscDarkPlus}>
+        {data}
+    </SyntaxHighlighter>
   )
 }
 

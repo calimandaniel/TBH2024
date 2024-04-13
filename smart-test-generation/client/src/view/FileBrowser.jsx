@@ -13,7 +13,7 @@ const FileBrowser = ({ data }) => {
                 <Accordion allowZeroExpanded>
                     <AccordionItem key={node.name}>
                         <AccordionItemHeading>
-                            <AccordionItemButton style={{ marginLeft: `${depth * 20}px` }}>
+                            <AccordionItemButton style={{ marginLeft: `${depth * 20}px`, marginBottom: '5px' }}>
                                 <FOLDERICON/>{node.name}
                                     <AccordionItemState>
                                         {({ expanded }) => (expanded ? <DownArrowIcon/> : <LeftArrowIcon/>)}
