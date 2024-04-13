@@ -3,6 +3,49 @@ import { BackendService } from "@genezio-sdk/smart-test-generation";
 import './App.css'
 import Title from './view/Title';
 import GitRepositoryForm from './view/GitRepositoryForm';
+import FileBrowser from './FileBrowser';
+
+const data = {
+  name: 'project-title',
+  children: [
+    {
+      name: 'smth.py',
+      // content: 'pyhton code 1'
+    },
+    {
+      name: 'smth2.py',
+      content: 'pyhton code 2'
+    },
+    {
+      name: 'subfolder1',
+      children: [
+        {
+          name: 'smth3.py',
+          content: 'pyhton code 3'
+        },
+        {
+          name: 'smth4.py',
+          content: 'pyhton code 4'
+        },
+      ]
+    },
+
+    {
+      name: 'subfolder2',
+      children: [
+        {
+          name: 'smth5.py',
+          content: 'pyhton code 3'
+        },
+        {
+          name: 'smth6.py',
+          content: 'pyhton code 4'
+        },
+      ]
+    },
+
+  ]
+};
 
 function App() {
   const [repositoryURL, setRepositoryURL] = useState('');
@@ -27,6 +70,8 @@ function App() {
     event.preventDefault();
     console.log('Sent:', repositoryURL);
     findRepository();
+
+    console.log(jsonString);
     
     setRepositoryURL('');
   };
@@ -49,6 +94,8 @@ function App() {
         disabled={!isValidURL || repositoryURL === '' || processingRequest} 
         show={!isValidURL}
       />
+
+      <FileBrowser data={data} />
     </>
   );
 }
