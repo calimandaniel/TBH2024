@@ -1,16 +1,24 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  line-height: 1;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: rgb(255, 255, 255);
+  background-color: #000000;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --genezio-green: #00c883;
+  --genezio-purple: #4c2e85;
+  --genezio-red: red;
+  --disabled-button-background-color: #EEEEEE;
+  --disabled-button-text-color: #222831;
+  --folder-selector-arrow: #267B84;
+  --editor-background: #1e1e1e;
 }
 
 a {
@@ -57,20 +65,93 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
-
 .textfield {
   width: 80%;
   height: 30px;
+  border: 2px solid var(--genezio-purple);
+}
+
+.i {  
+  color: var(--genezio-green);
+  position: -3em;
+}
+.i:before {
+  content: "ı";
+  position: absolute; 
+  color: white;
+}
+
+.enabled-button {
+  background-color: var(--genezio-purple); /* Red background */
+  color: white; /* White text color */
+}
+
+.disabled-button {
+  background-color: var(--disabled-button-text-color); /* Red background */
+  color: var(--disabled-button-background-color); /* White text color */
+}
+
+.arrow-icon {
+  color: var(--folder-selector-arrow); /* Set the color to red */
+}
+
+.folder-icon {
+  color: var(--genezio-green); /* Set the color to red */
+}
+
+.code-icon {
+  color: var(--genezio-purple); /* Set the color to red */
+}
+
+.files-browser {
+  border: 2px solid white;
+}
+
+.edit-button {
+  background-color: var(--genezio-green);
+}
+
+.cancel-button {
+  background-color: var(--genezio-red);
+}
+
+.save-button {
+  background-color: var(--folder-selector-arrow);
+}
+
+.display {
+  background-color: var(--editor-background); 
+  border: 2px solid var(--editor-background);
+  border-radius: 10px;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #000000;
+    background-color: #ffffff;
+  }
+  
+  a:hover {
+    color: #747bff;
+  }
+  
+  button {
+    background-color: #f9f9f9;
+  }
+
+  .i:before {
+    content: "ı";
+    position: absolute; 
+    color: rgb(0, 0, 0);
+  }
+
+  .disabled-button {
+    background-color: var(--disabled-button-background-color); /* Red background */
+    color: var(--disabled-button-text-color); /* White text color */
+  }
+
+  .files-browser {
+    border: 2px solid rgb(0, 0, 0);
+  }
+
 }

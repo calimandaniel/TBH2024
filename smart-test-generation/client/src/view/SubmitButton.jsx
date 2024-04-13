@@ -2,7 +2,14 @@ import React from 'react'
 
 const SubmitButton = ({disabled}) => {
   return (
-    <button type="submit" disabled={disabled}>Go</button>
+    <button 
+      type="submit" 
+      disabled={disabled} 
+      className={disabled ? 'disabled-button' : 'enabled-button'}
+      style={{height: '45px',  width: '100px'}}
+    >
+      Go
+    </button>
   )
 }
 
