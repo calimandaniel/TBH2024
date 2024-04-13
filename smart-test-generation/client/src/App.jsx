@@ -27,6 +27,19 @@ const data = {
           name: 'smth4.py',
           content: 'pyhton code 4'
         },
+        {
+          name: 'subfolder3',
+          children: [
+            {
+              name: 'smth7.py',
+              content: 'pyhton code 3'
+            },
+            {
+              name: 'smth8.py',
+              content: 'pyhton code 4'
+            },
+          ]
+        },
       ]
     },
 

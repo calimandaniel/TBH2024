@@ -1,8 +1,10 @@
 import React from 'react';
-import { Accordion, AccordionItem, AccordionItemButton, AccordionItemHeading, AccordionItemPanel } from 'react-accessible-accordion';
+import { Accordion, AccordionItem, AccordionItemButton, AccordionItemHeading, AccordionItemPanel, AccordionItemState } from 'react-accessible-accordion';
 
 import FOLDERICON from './FolderIcon';
 import CODEICON from './CodeIcon';
+import DownArrowIcon from './DownArrowIcon';
+import LeftArrowIcon from './LeftArrowIcon';
 
 const FileBrowser = ({ data }) => {
     const renderNodes = (node, depth) => {
@@ -12,7 +14,10 @@ const FileBrowser = ({ data }) => {
                     <AccordionItem key={node.name}>
                         <AccordionItemHeading>
                             <AccordionItemButton style={{ marginLeft: `${depth * 20}px` }}>
-                                    <FOLDERICON/>{node.name}
+                                <FOLDERICON/>{node.name}
+                                    <AccordionItemState>
+                                        {({ expanded }) => (expanded ? <DownArrowIcon/> : <LeftArrowIcon/>)}
+                                </AccordionItemState>
                             </AccordionItemButton>
                         </AccordionItemHeading>
                         <AccordionItemPanel>
