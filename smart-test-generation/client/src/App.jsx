@@ -131,8 +131,8 @@ def is_prime(n):
   return True
 `;
 
-const filename1 = 'smth5.py';
-const filename2 = 'smth6.py';
+const filename1 = 'something very very looooooooooooooooooooooooooooooooooooooong 1.pyy';
+const filename2 = 'something very very looooooooong 2.py';
 
 function App() {
   const [repositoryURL, setRepositoryURL] = useState('');
