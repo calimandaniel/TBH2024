@@ -8,6 +8,7 @@ import FileBrowser from './view/FileBrowser';
 import CodeDisplay from './CodeDisplay';
 import CodeEditor from './CodeEditor';
 import UnitTestClassDisplayAndEdit from './UnitTestClassDisplayAndEdit';
+import Stack from '@mui/material/Stack';
 
 const data = {
   name: 'project-title',
@@ -179,11 +180,15 @@ function App() {
         show={!isValidURL}
       />
 
-      <FileBrowser data={data} />
+      <Stack spacing={{ xs: 1, sm: 2 }} direction="row" useFlexGap flexWrap="wrap">
+        <FileBrowser data={data} />
 
-      <CodeDisplay data={code}/>
+        <CodeDisplay data={code}/>
 
-      <UnitTestClassDisplayAndEdit data={code_edit} />
+        <UnitTestClassDisplayAndEdit data={code_edit} />
+      </Stack>
+
+      
 
     </>
   );
