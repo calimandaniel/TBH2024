@@ -2,7 +2,7 @@ import React from 'react'
 
 const Title = () => {
   return (
-    <h1>Smart Test Generation</h1>
+    <h1>Smart Test Generat<span class="i">i</span>on</h1>
   )
 }
 
