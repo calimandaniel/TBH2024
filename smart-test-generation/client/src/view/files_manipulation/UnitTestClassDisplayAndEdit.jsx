@@ -7,13 +7,19 @@ import UnitTestClassDisplayAndEditHeader from './UnitTestClassDisplayAndEditHead
 const UnitTestClassDisplayAndEdit = ({ filename, data }) => {
   const [editMode, setEditMode] = useState(false);
   const [edited, setEdited] = useState(false);
+  const [code, setCode] = useState(data); 
 
   const handleToggleEditMode = () => {
     setEditMode(prevMode => !prevMode);
+    // Reset edited state when switching between edit mode
+    setEdited(false);
   };
 
-  const handleTextChange = () => {
-    setEdited(true);
+  const handleTextChange = (editedCode) => {
+    setEdited(true); // Set edited state to true when text changes
+    setCode(editedCode);
+    console.log(code);
+    console.log(editedCode);
   };
 
   return (
@@ -26,7 +32,7 @@ const UnitTestClassDisplayAndEdit = ({ filename, data }) => {
             className='display'
         >
       
-            {editMode ? <CodeEditor data={data} onChange={handleTextChange} /> : <CodeDisplay filename={filename} data={data} />}
+            {editMode ? <CodeEditor data={code} onChange={handleTextChange} /> : <CodeDisplay filename={filename} data={code} />}
 
             <UnitTestClassDisplayAndEditHeader
                 editMode={editMode}

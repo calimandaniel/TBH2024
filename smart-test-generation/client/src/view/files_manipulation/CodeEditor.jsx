@@ -5,7 +5,7 @@ const CodeEditor = ({ data, onChange }) => {
 
     const handleChange = (e) => {
         setCode(e.target.value);
-        onChange();
+        onChange(code);
     };
 
     return (
