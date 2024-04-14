@@ -34,9 +34,13 @@ const FileBrowser = ({ data }) => {
             );
         } else {
             return (
-                <p key={node.name} style={{ marginLeft: `${depth * 20}px`, whiteSpace: 'nowrap' }}>
+                <button 
+                    type="submit" 
+                    style={{backgroundColor: 'transparent', marginLeft: `${depth * 5}px`, whiteSpace: 'nowrap', marginBottom: '5px'}}
+                    key={node.name}
+                >
                     <CODEICON/>{node.name}
-                </p>
+                </button>
             );
         }
     };

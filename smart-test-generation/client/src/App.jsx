@@ -9,7 +9,7 @@ import CodeDisplay from './view/files_manipulation/CodeDisplay';
 import UnitTestClassDisplayAndEdit from './view/files_manipulation/UnitTestClassDisplayAndEdit';
 import Stack from '@mui/material/Stack';
 import { useSelector } from 'react-redux';
-import APIService from './APIService';
+import APIService from './API/APIService';
 import CircularProgress from '@mui/material/CircularProgress';
 
 const data = {
@@ -185,8 +185,6 @@ function App() {
     <>
       <Title />
 
-      
-
       <GitRepositoryForm 
         onSubmit={handleSubmit} 
         value={repositoryURL} 
@@ -196,17 +194,36 @@ function App() {
       />
 
     {showLoader && (
-      <CircularProgress sx={{color: '#00c883'}} />
+      <CircularProgress sx={{color: '#00c883', marginTop: '20px'}} />
     )}
 
     {showErrorMessage && (
       <p>Error: {error}</p>
     )}
 
+    {!showLoader && !showErrorMessage && statusCode==='201' &&(
       <Stack spacing={{ xs: 1, sm: 2 }} direction="row" useFlexGap flexWrap="wrap" style={{marginTop: '10vh', marginBottom: '10vh'}}>
         <FileBrowser data={data} />
 
         <CodeDisplay filename={filename1} data={code}/>
+
+        <UnitTestClassDisplayAndEdit filename={filename2} data={code_edit} />
+      </Stack>
+    )}
+
+      <Stack spacing={{ xs: 1, sm: 2 }} direction="row" useFlexGap flexWrap="wrap" style={{marginTop: '10vh', marginBottom: '10vh'}}>
+        <FileBrowser data={data} />
+
+        <CodeDisplay filename={filename1} data={code}/>
+
+        {/* <button 
+          type="submit" 
+          // disabled={disabled} 
+          // className={disabled ? 'disabled-button' : 'enabled-button'}
+          style={{height: '45px',  width: '200px'}}
+        >
+          Get Unit Test
+        </button> */}
 
         <UnitTestClassDisplayAndEdit filename={filename2} data={code_edit} />
       </Stack>

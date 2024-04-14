@@ -11,7 +11,6 @@ const UnitTestClassDisplayAndEdit = ({ filename, data }) => {
 
   const handleToggleEditMode = () => {
     setEditMode(prevMode => !prevMode);
-    // Reset edited state when switching between edit mode
     setEdited(false);
   };
 
