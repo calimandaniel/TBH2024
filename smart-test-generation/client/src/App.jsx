@@ -144,7 +144,11 @@ function App() {
   const [showErrorMessage, setShowErrorMessage] = useState(false);
   const [showLoader, setShowLoader] = useState(false);
 
-  const { loading, error, statusCode } = useSelector((state) => state.statusCode);
+  const projectState = useSelector(state => state.project);
+  // const fileState = useSelector(state => state.file);
+  // const unitState = useSelector(state => state.unit);
+
+  const { loading, error, statusCode } =  projectState;
 
   const handleChange = (event) => {
     setRepositoryURL(event.target.value);
