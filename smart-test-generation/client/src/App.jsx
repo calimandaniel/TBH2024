@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react';
 import { BackendService } from "@genezio-sdk/smart-test-generation";
 import './App.css'
 import Title from './view/Title';
@@ -8,6 +8,8 @@ import FileBrowser from './view/FileBrowser';
 import CodeDisplay from './view/files_manipulation/CodeDisplay';
 import UnitTestClassDisplayAndEdit from './view/files_manipulation/UnitTestClassDisplayAndEdit';
 import Stack from '@mui/material/Stack';
+import { useSelector } from 'react-redux';
+import APIService from './APIService';
 
 const data = {
   name: 'project-title',
@@ -136,29 +138,24 @@ const filename2 = 'something very very looooooooooooooooooooooooooooooooooooooon
 
 function App() {
   const [repositoryURL, setRepositoryURL] = useState('');
-  const [response, setResponse] = useState("");
   const [isValidURL, setIsValidURL] = useState(true);
   const [processingRequest, setProcessingRequest] = useState(false);
 
-  async function findRepository() {
-    setProcessingRequest(true); // disable the ability to make new requests
-    setResponse(await BackendService.findRepository(repositoryURL));
-   
-    console.log('Received:', response);
-    setProcessingRequest(false); // disable the ability to make new requests
-  }
+  const [showErrorMessage, setShowErrorMessage] = useState(false);
+
+  const { loading, error, statusCode } = useSelector((state) => state.statusCode);
 
   const handleChange = (event) => {
     setRepositoryURL(event.target.value);
     setIsValidURL(validateGitRepoURL(event.target.value));
+    setShowErrorMessage(false);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log('Sent:', repositoryURL);
-    findRepository();
 
-    console.log(jsonString);
+    APIService.getInstance().postNewProject(repositoryURL);
     
     setRepositoryURL('');
   };
@@ -169,6 +166,17 @@ function App() {
 
     return regex.test(url);
   };
+
+  useEffect(() => {
+    if (error) {
+      setShowErrorMessage(true);
+    }
+  }, [error]);
+
+  if (loading) return (
+    <>
+    </>
+  );
 
   return (
     <>
@@ -182,6 +190,10 @@ function App() {
         show={!isValidURL}
       />
 
+    {showErrorMessage && (
+      <p>Error: {error}</p>
+    )}
+
       <Stack spacing={{ xs: 1, sm: 2 }} direction="row" useFlexGap flexWrap="wrap" style={{marginTop: '10vh', marginBottom: '10vh'}}>
         <FileBrowser data={data} />
 
@@ -189,8 +201,6 @@ function App() {
 
         <UnitTestClassDisplayAndEdit filename={filename2} data={code_edit} />
       </Stack>
-
-      
 
     </>
   );
