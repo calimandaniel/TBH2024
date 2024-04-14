@@ -10,6 +10,7 @@ import UnitTestClassDisplayAndEdit from './view/files_manipulation/UnitTestClass
 import Stack from '@mui/material/Stack';
 import { useSelector } from 'react-redux';
 import APIService from './APIService';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const data = {
   name: 'project-title',
@@ -140,8 +141,8 @@ function App() {
   const [repositoryURL, setRepositoryURL] = useState('');
   const [isValidURL, setIsValidURL] = useState(true);
   const [processingRequest, setProcessingRequest] = useState(false);
-
   const [showErrorMessage, setShowErrorMessage] = useState(false);
+  const [showLoader, setShowLoader] = useState(false);
 
   const { loading, error, statusCode } = useSelector((state) => state.statusCode);
 
@@ -170,17 +171,21 @@ function App() {
   useEffect(() => {
     if (error) {
       setShowErrorMessage(true);
+      setShowLoader(false);
     }
   }, [error]);
 
-  if (loading) return (
-    <>
-    </>
-  );
+  useEffect(() => {
+    if (loading) {
+      setShowLoader(true);
+    }
+  }, [loading]);
 
   return (
     <>
       <Title />
+
+      
 
       <GitRepositoryForm 
         onSubmit={handleSubmit} 
@@ -189,6 +194,10 @@ function App() {
         disabled={!isValidURL || repositoryURL === '' || processingRequest} 
         show={!isValidURL}
       />
+
+    {showLoader && (
+      <CircularProgress sx={{color: '#00c883'}} />
+    )}
 
     {showErrorMessage && (
       <p>Error: {error}</p>
