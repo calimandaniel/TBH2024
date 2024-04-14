@@ -22,10 +22,10 @@ backend:
     local: npm install
   # The cloud provider where the backend is deployed.
   cloudProvider: genezio
-  
+
   ### DEFINE BACLEND CLASSESE
   classes:
-      - path: downloader.js
+    - path: downloader.js
 # Information about the frontend, including the path, language, and publish directory.
 # It is optional. It can also be an array if there are multiple frontends you want to deploy.
 frontend:
@@ -49,3 +49,4 @@ frontend:
     start:
       - npm install --silent
       - npm run dev --silent
+  subdomain: aqua-cooperative-kangaroo
